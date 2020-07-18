@@ -34,4 +34,9 @@ class HomeController extends Controller
 
         return 'success';
     }
+
+    public function lols()
+    {
+        return;
+    }
 }
