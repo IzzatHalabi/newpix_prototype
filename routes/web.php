@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', function () {
+    return view('layouts.header');
+});
+
 Route::get('/jquery', 'HomeController@sendMail');
 
 Auth::routes();
