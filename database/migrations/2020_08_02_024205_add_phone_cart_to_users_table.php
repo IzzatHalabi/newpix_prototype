@@ -9,8 +9,8 @@ class AddPhoneCartToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('phone')->after('name');
-            $table->text('address')->after('phone');
+            $table->string('phone')->nullable()->after('name');
+            $table->text('address')->nullable()->after('phone');
         });
     }
 
