@@ -21,4 +21,6 @@ Route::get('/jquery', 'HomeController@sendMail');
 
 Auth::routes();
 
+Route::get('/items', 'ItemController@index')->name('items.index');
+
 Route::get('/home', 'HomeController@index')->name('home');

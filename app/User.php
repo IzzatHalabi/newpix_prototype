@@ -10,35 +10,36 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 
+        'email', 
+        'password',
+        'phone',
+        'address'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function FunctionName()
+    public function hasItem($itemId)
     {
-        # code...
+        return $this->items()->pluck('id')->contains($itemId);
+    }
+
+    public function items()
+    {
+        return $this->belongsToMany(Item::class, Cart::class, 'user_id', 'item_id')
+                        ->withPivot('quantity')
+                        ->with('category:id,name');
+    }
+
+    public function receipts()
+    {
+        return $this->hasMany(Receipt::class);
     }
 }
