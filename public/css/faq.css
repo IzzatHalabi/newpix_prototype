@@ -1,0 +1,37 @@
+.faq {
+  height: 80vh;
+  position: relative; }
+  .faq .faq-upper img {
+    height: 100%;
+    width: 100%; }
+  .faq .faq-upper h1 {
+    position: absolute;
+    font-family: "Playfair Display";
+    font-size: 2.5rem;
+    line-height: 4.5rem;
+    color: #ffffff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .faq .faq-upper h4 {
+    position: absolute;
+    font-family: "Playfair Display";
+    color: #ffffff;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 32px 0 0;
+    width: 620px; }
+  .faq .faq-lower {
+    margin: 32px 0 0; }
+    .faq .faq-lower ul li {
+      list-style: none; }
+      .faq .faq-lower ul li h5 {
+        color: #3490dc;
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin: 0; }
+      .faq .faq-lower ul li p {
+        line-height: 1.8rem;
+        font-weight: 300;
+        color: #3490dc; }
