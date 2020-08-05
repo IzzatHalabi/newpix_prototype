@@ -20,7 +20,7 @@
                 <span>Stylish.</span>
               </div>
               <div class="line">
-                <span> Satisfaction guaranteed.</span>
+                <span>Satisfaction guaranteed.</span>
               </div>
             </h1>
           </div>
@@ -32,62 +32,52 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <h1>ARORA</h1>
+    <div class="row">  
       <div class="catalogue">
-          <h1>ARORA</h1>
+        @foreach ($productsArora as $productArora)
         <div class="catalogue-items">
-          <div>
-            <img src="./images/ARORA/ARORA-1.jpeg">
+          <div class="catalogue-image">
+          <a href="{{ route('home.show', $productArora->slug)}}"><img src="{{ asset('images/ARORA/'.$productArora->name.'.png')}}"></a>
           </div>
-          <div>
-            <img src="./images/ARORA/ARORA-2.jpeg">
-          </div>
-          <div>
-            <img src="./images/ARORA/ARORA-3.jpeg">
-          </div>
-          <div>
-            <img src="./images/ARORA/ARORA-6.png">
-          </div>
-          <div>
-            <img src="./images/ARORA/ARORA-10.png">
+          <div class="catalogue-text">
+            <a href="{{ route('home.show', $productArora->slug)}}"><h6>{{ $productArora->name }}</h6></a>
+            <h6>RM {{ $productArora->price }}</h6>
           </div>
         </div>
-          <h1>ORENSPORT</h1>
-          <div class="catalogue-items">
-            <div>
-              <img src="./images/ORENSPORT/OREN SPORT-20.png">
-            </div>
-            <div>
-              <img src="./images/ORENSPORT/OREN SPORT-28.png">
-            </div>
-            <div>
-              <img src="./images/ORENSPORT/OREN SPORT-30.png">
-            </div>
-            <div>
-              <img src="./images/ORENSPORT/OREN SPORT-34.png">
-            </div>
-            <div>
-              <img src="./images/ORENSPORT/OREN SPORT-38.png">
-            </div>
+        @endforeach
+      </div>
+    </div>
+    <h1>OPENSPORT</h1>
+    <div class="row">  
+      <div class="catalogue">
+        @foreach ($productsOrensport as $productOrensport)
+        <div class="catalogue-items">
+          <div class="catalogue-image">
+          <a href="{{ route('home.show', $productOrensport->slug)}}"><img src="{{ asset('images/ORENSPORT/'.$productOrensport->name.'.png')}}"></a>
           </div>
-          <h1>PANZER</h1>
-          <div class="catalogue-items">
-            <div>
-              <img src="./images/PANZER/PANZER CATALOGUE-4.png">
-            </div>
-            <div>
-              <img src="./images/PANZER/PANZER CATALOGUE-6.png">
-            </div>
-            <div>
-              <img src="./images/PANZER/PANZER CATALOGUE-8.png">
-            </div>
-            <div>
-              <img src="./images/PANZER/PANZER CATALOGUE-9.png">
-            </div>
-            <div>
-              <img src="./images/PANZER/PANZER CATALOGUE-10.png">
-            </div>
+          <div class="catalogue-text">
+            <a href="{{ route('home.show', $productOrensport->slug)}}"><h6>{{ $productOrensport->name }}</h6></a>
+            <h6>RM {{ $productOrensport->price }}</h6>
           </div>
+        </div>
+        @endforeach
+      </div>
+    </div>
+    <h1>PANZER</h1>
+    <div class="row">  
+      <div class="catalogue">
+        @foreach ($productsPanzer as $productPanzer)
+        <div class="catalogue-items">
+          <div class="catalogue-image">
+            <a href="{{ route('home.show', $productPanzer->slug)}}"><img src="{{ asset('images/PANZER/'.$productPanzer->name.'.png')}}"></a>
+          </div>
+          <div class="catalogue-text">
+            <a href="{{ route('home.show', $productPanzer->slug)}}"><h6>{{ $productPanzer->name }}</h6></a>
+            <h6>RM {{ $productPanzer->price }}</h6>
+          </div>
+        </div>
+        @endforeach
       </div>
     </div>
   </div>

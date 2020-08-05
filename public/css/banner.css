@@ -1,6 +1,12 @@
 .banner {
   height: 80vh;
   position: relative; }
+  .banner h1 {
+    color: #315b96;
+    font-size: 2rem;
+    line-height: 4.5rem;
+    margin: 32px 0 0;
+    text-align: center; }
   .banner .banner-bg {
     background: #ffe5e5;
     position: absolute;
@@ -27,11 +33,8 @@
         margin: 32px 0 0;
         width: 620px; }
         .banner .banner-inner .content .content-inner h1 .line {
-          overflow: hidden;
           height: 75px;
           position: relative; }
-          .banner .banner-inner .content .content-inner h1 .line span {
-            position: absolute; }
     .banner .banner-inner .image {
       position: relative;
       width: 40%;
@@ -39,21 +42,20 @@
       display: flex;
       justify-content: center;
       align-items: flex-end; }
-      .banner .banner-inner .image .image-inner img {
+      .banner .banner-inner .image img {
         width: 500px;
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
         z-index: 9; }
-  .banner .catalogue h1 {
-    color: #315b96;
-    font-size: 2rem;
-    line-height: 4.5rem;
-    margin: 32px 0 0; }
-  .banner .catalogue .catalogue-items {
+  .banner .catalogue {
     display: flex; }
     .banner .catalogue .catalogue-items div {
       padding-right: 20px; }
-    .banner .catalogue .catalogue-items img {
+    .banner .catalogue .catalogue-items .catalogue-image img {
       width: 200px; }
+    .banner .catalogue .catalogue-items .catalogue-text h6 {
+      color: #315b96;
+      font-size: 1rem;
+      text-align: center; }

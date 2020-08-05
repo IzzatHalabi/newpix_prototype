@@ -1,0 +1,52 @@
+@import "../../resources/sass/variables.scss";
+
+.faq {
+    height: 80vh;
+    position: relative;
+    .faq-upper{
+        img {
+            height: 100%;
+            width: 100%;
+        }
+        h1 {
+            position: absolute;
+            font-family: "Playfair Display";
+            font-size: 2.5rem;
+            line-height: 4.5rem;
+            color: $white;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        h4 {
+            position: absolute;
+            font-family: "Playfair Display";
+            color: $white;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 32px 0 0;
+            width: 620px;
+        }
+    }   
+    .faq-lower {
+        margin: 32px 0 0;
+        ul{
+            
+            li {
+                list-style: none;
+                h5 {
+                    color: $blue;
+                    font-weight: 600;
+                    font-size: 1.2rem;
+                    margin: 0;
+                }
+                p {
+                    line-height: 1.8rem;
+                        font-weight: 300;
+                        color: $blue;
+                }
+            }
+        }
+    }
+}

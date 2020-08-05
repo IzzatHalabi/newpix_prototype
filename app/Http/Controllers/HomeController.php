@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Mail;
 use Illuminate\Http\Request;
-use App\Mail\emailtesting;
+use App\ProductArora;
+use App\ProductOrensport;
+use App\ProductPanzer;
+use App\Product;
 
 class HomeController extends Controller
 {
@@ -13,30 +15,40 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        return view('home',['test' => ['1', '100']]);
+        $productsArora = ProductArora::inRandomOrder()->take(5)->get();
+        $productsOrensport = ProductOrensport::inRandomOrder()->take(5)->get();
+        $productsPanzer = ProductPanzer::inRandomOrder()->take(5)->get();
+
+        return view('home')->with(compact('productsArora','productsOrensport','productsPanzer'));
     }
 
-    public function sendMail()
+        /**
+     * Display the specified resource.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function show($slug)
     {
-        Mail::to("izzathalabia@gmail.com")->send(new emailtesting());
+        $product = Product::where('slug', $slug)->firstOrFail();
 
-        return 'success';
+        return view('product')->with(compact('product'));
+        
     }
-
-    public function lols()
-    {
-        return;
-    }
+    
 }

@@ -1,0 +1,36 @@
+@import "../../resources/sass/variables.scss";
+
+.product {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+    .product-image {
+        position: absolute;
+        display: flex;
+        img {
+            width: 300px;
+        }
+    }
+    .product-details {
+        padding-left: 350px;
+        position: absolute;
+        h2 {
+            color: $lBlue;
+            font-size: 3.2rem;
+            line-height: 4.5rem;
+            margin: 32px 0 0;
+        }
+        h3 {
+            color: gray;
+            margin: 16px 0 0;
+        }
+        p {
+            color:$blue;
+            margin: 16px 0 0;
+        }
+        .cart-button {
+            margin: 16px 0 0;
+        }
+    }
+    
+}
