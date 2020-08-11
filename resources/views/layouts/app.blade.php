@@ -26,7 +26,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex" href="{{ url('/') }}">
+                <a class="navbar-brand d-flex" href="{{ route('items.index') }}">
                     <div><img src="/images/newpixLogo.jpg" alt="newpixLogo" style="width: 300px;"></div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -77,7 +77,7 @@
 
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="index.html">Simple Ecommerce</a>
+                <a class="navbar-brand" href="{{ route('items.index') }}"> Simple Ecommerce </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -85,21 +85,29 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
                     <ul class="navbar-nav m-auto">
                         <li class="nav-item m-auto">
-                        <a class="nav-link" href="{{ route('home.index')}}">Home</a>
+                        <a class="nav-link" href="{{ route('items.index')}}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('faq')}}">FAQ</a>
                         </li>
                     </ul>
         
-                    <form class="form-inline my-2 my-lg-0">
-                        <a class="btn btn-success btn-sm ml-3" href="{{ route('cart.index')}}">
-                            <i class="fa fa-shopping-cart"></i> Cart
-                            @if (Cart::instance('default')->count() > 0)
-                                <span class="badge badge-light">{{ Cart::instance('default')->count()}}</span>
-                            @endif
-                        </a>
-                    </form>
+                    @guest
+                    @else
+                        <form class="form-inline my-2 my-lg-0">
+                            <a class="btn btn-success btn-sm ml-3" href="{{ route('cart.index')}}">
+                                <i class="fa fa-shopping-cart"></i> Cart
+                                @if (Auth::user()->items()->count() > 0)
+                                    <span class="badge badge-light">{{ Auth::user()->items()->count() }}</span>
+                                @endif
+                            </a>
+                        </form>
+                        <form class="form-inline my-2 my-lg-0">
+                            <a class="btn btn-light btn-sm ml-3" href="{{ route('receipts.index')}}">
+                                <i class="fa fa-history"></i> History
+                            </a>
+                        </form>
+                    @endguest
                 </div>
             </div>
         </nav>

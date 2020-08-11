@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -14,7 +16,12 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('cart');
+        $items = Auth::user()->items;
+        
+        return view('cart', [
+            'items' => $items,
+            'totalPrice' => Cart::totalPrice(Auth::user(), $items)
+        ]);
     }
 
     public function __construct()

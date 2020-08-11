@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,17 +18,21 @@ class PaymentController extends Controller
 
     public function create()
     {
-        return view('payments.create', [
-            'item' => Auth::user()->items,
-            'user' => Auth::user()
+        $user = Auth::user();
+        $items = $user->items;
+
+        return view('checkout', [
+            'user' => Auth::user(),
+            'items' => $items,
+            'totalPrice' => Cart::totalPrice(Auth::user(), $items)
         ]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
         return redirect()
                 ->route('receipts.show', [
-                    'receiptId' => $this->paymentService->makePayment()->id
+                    'receiptId' => $this->paymentService->makePayment($request)->id
                 ]);
     }
 }

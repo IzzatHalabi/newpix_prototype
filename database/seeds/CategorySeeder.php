@@ -12,23 +12,15 @@ class CategorySeeder extends Seeder
         Category::truncate();
 
         Category::create([
-            'name' => 'Tops'
+            'name' => 'Arora'
         ]);
 
         Category::create([
-            'name' => 'Jackets'
+            'name' => 'Orensport'
         ]);
 
         Category::create([
-            'name' => 'Suits'
-        ]);
-
-        Category::create([
-            'name' => 'Trousers'
-        ]);
-
-        Category::create([
-            'name' => 'Sportswear'
+            'name' => 'Panzer'
         ]);
 
         Schema::enableForeignKeyConstraints();

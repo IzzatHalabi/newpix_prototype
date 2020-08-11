@@ -13,17 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/items', 'ItemController@index')->name('items.index');
+Route::get('/', 'HomeController@index')->name('items.index');
+Route::get('/items/{itemId}', 'ItemController@show')->name('items.show');
+Route::post('/items/add-to-cart', 'ItemController@addToCart')->name('items.add-to-cart');
+Route::delete('/items/{itemId}/add-to-cart', 'ItemController@removeFromCart')->name('items.remove-from-cart');
+Route::get('/payment', 'PaymentController@create')->name('payments.create');
+Route::post('/payment', 'PaymentController@store')->name('payments.store');
+Route::get('/receipts', 'ReceiptController@index')->name('receipts.index');
+Route::get('/receipts/{receiptId}', 'ReceiptController@show')->name('receipts.show');
 
-Route::get('/home', 'HomeController@index')->name('home.index');
+
+// Route::get('/home', 'HomeController@index')->name('home.index');
 Route::get('/home/{product}', 'HomeController@show')->name('home.show');
-Route::get('/faq', 'PagesController@faq')->name('faq');
+Route::get('/faq', 'HomeController@faq')->name('faq');
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::post('/cart', 'CartController@store')->name('cart.store');
 Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');

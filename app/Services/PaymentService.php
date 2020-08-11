@@ -9,20 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class PaymentService {
 
-    public function makePayment()
+    public function makePayment($request)
     {
         $user = Auth::user();
 
-        $formatter = new ReceiptFormatter($user);
+        $formatter = new ReceiptFormatter($request);
 
         $receipt = Receipt::create([
             'user_id' => $user->id,
-            'details' => json_encode($formatter->general())
+            'details' => json_encode($formatter->general($user->items))
         ]);
 
         $user->items()->detach();
-
-        // TODO: email
 
         return $receipt;
     }

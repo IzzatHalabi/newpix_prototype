@@ -2,45 +2,51 @@
 
 namespace App;
 
-use App\User;
-
-class ReceiptFormatter {
-    
-    protected $user;
+class ReceiptFormatter 
+{    
     protected $format;
 
-    public function __construct(User $user)
+    public function __construct($data)
     {
-        $this->user = $user;
         $this->format = [
-            'userName' => $this->user->name,
-            'email' => $this->user->email,
-            'phone' => $this->user->phone,
-            'address' => $this->user->address,
-            'totalPrice' => 0,
+            'receipt_code' => $this->latestCode(),
+            'buyer_name' => $data->name,
+            'email' => $data->email,
+            'phone' => $data->phone,
+            'address' => $data->address,
+            'total_price' => 0,
             'items' => []
         ];
     }
 
-    public function general()
+    public function general($items)
     {
-        foreach ($this->user->items as $item) $this->track($item);
+        foreach ($items as $item) $this->track($item);
 
         return $this->format;
     }
 
     public function track($item)
     {
-        $subPrice = $item->price * $item->pivot->quantity;
+        $subPrice = number_format($item->price * $item->pivot->quantity, 2);
 
         array_push($this->format['items'], [
             'name' => $item->name,
             'category' => $item->category->name,
-            'price' => $item->price,
+            'price' => number_format($item->price, 2),
             'quantity' => $item->pivot->quantity,
-            'subPrice' => $subPrice
+            'sub_price' => $subPrice
         ]);
 
-        $this->format['totalPrice'] += $subPrice;
+        $this->format['total_price'] += $subPrice;
+    }
+
+    public function latestCode()
+    {
+        $latestId = Receipt::all()->isNotEmpty() 
+                        ? Receipt::latest()->first()->id + 1
+                        : 1;
+
+        return sprintf("R-%05d", $latestId);
     }
 }

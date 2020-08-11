@@ -7,8 +7,12 @@ use Illuminate\Support\Facades\Auth;
 
 class ItemService {
 
-    public function addToCart($user, $request)
+    public function addToCart($request)
     {
+        if (! $request->quantity) return $this->removeFromCart($request->itemId);
+
+        $user = Auth::user();
+
         if ($user->hasItem($request->itemId)) {
             
             $user->items()->updateExistingPivot(
@@ -24,8 +28,8 @@ class ItemService {
         }
     }
 
-    public function removeFromCart($user, $request)
+    public function removeFromCart($itemId)
     {
-        $user->items()->detach($request->itemId);
+        Auth::user()->items()->detach($itemId);
     }
 }

@@ -13,6 +13,7 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->float('price', 10, 2);
+            $table->text('image_url');
             
             $table->foreignId('category_id')
                     ->nullable()

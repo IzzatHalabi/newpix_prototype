@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\OrderProduct;
+use App\Cart;
 use Illuminate\Http\Request;
-use Gloudemans\Shoppingcart\Facades\Cart;
+// use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -23,7 +25,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('checkout');
+        $user = Auth::user();
+        $items = $user->items;
+
+        return view('checkout', [
+            'user' => $user,
+            'items' => $items,
+            'totalPrice' => Cart::totalPrice(Auth::user(), $items)
+        ]);
     }
 
     /**

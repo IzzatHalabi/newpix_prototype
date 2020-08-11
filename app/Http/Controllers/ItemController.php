@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use App\Category;
+use App\Services\ItemService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +14,7 @@ class ItemController extends Controller
 
     public function __construct(ItemService $itemService)
     {
+        $this->middleware('auth');
         $this->itemService = $itemService;
     }
 
@@ -28,7 +30,7 @@ class ItemController extends Controller
     {
         $itemInCart = Auth::user()->hasItem($itemId);
 
-        return view('items.show', [
+        return view('product', [
             'item' => Item::findOrFail($itemId),
             'itemInCart' => $itemInCart,
             'quantity' => $itemInCart 
@@ -39,37 +41,18 @@ class ItemController extends Controller
 
     public function addToCart(Request $request)
     {
-        try {
-            $item = Item::findOrFail($request->itemId);
+        $this->itemService->addToCart($request);
 
-            $this->itemService->addToCart(Auth::user(), $request);
-
-            return response()->json([
-                'message' => 'Item '. $item->name .' is added to your cart.'
-            ]);
-
-        } catch (Exception $exception) {
-            return response()->json([
-                'errors' => $exception->getMessage()
-            ], 500);
-        }
+        return redirect()
+                ->route('cart.index')
+                ->with('success_message', 'Item was added to your cart.');
     }
 
-    public function removeFromCart(Request $request)
+    public function removeFromCart($itemId)
     {
-        try {
-            $item = Item::findOrFail($request->itemId);
+        $this->itemService->removeFromCart($itemId);
 
-            $this->itemService->removeFromCart(Auth::user(), $request);
-
-            return response()->json([
-                'message' => 'Item '. $item->name .' has been removed from your cart.'
-            ]);
-
-        } catch (Exception $exception) {
-            return response()->json([
-                'errors' => $exception->getMessage()
-            ], 500);
-        }
+        return back()
+                ->with('success_message','Item has been removed.');
     }
 }
