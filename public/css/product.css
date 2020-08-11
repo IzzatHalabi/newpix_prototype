@@ -1,0 +1,25 @@
+.product {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative; }
+  .product .product-image {
+    position: absolute;
+    display: flex; }
+    .product .product-image img {
+      width: 300px; }
+  .product .product-details {
+    padding-left: 350px;
+    position: absolute; }
+    .product .product-details h2 {
+      color: #315b96;
+      font-size: 3.2rem;
+      line-height: 4.5rem;
+      margin: 32px 0 0; }
+    .product .product-details h3 {
+      color: gray;
+      margin: 16px 0 0; }
+    .product .product-details p {
+      color: #3490dc;
+      margin: 16px 0 0; }
+    .product .product-details .cart-button {
+      margin: 16px 0 0; }
