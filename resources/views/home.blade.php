@@ -15,13 +15,13 @@
 					<div class="content-inner">
 						<h1>
 							<div class="line">
-								<span>Affordable.</span>
+								{{-- <span>Affordable.</span> --}}
 							</div>
 							<div class="line">
-								<span>Stylish.</span>
+								<span>{{ $respond }}</span>
 							</div>
 							<div class="line">
-								<span>Satisfaction guaranteed.</span>
+								{{-- <span>Satisfaction guaranteed.</span> --}}
 							</div>
 						</h1>
 					</div>

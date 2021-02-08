@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('items.index');
+Route::get('/', 'HomeController@test')->name('items.test');
+Route::get('/index', 'HomeController@index')->name('items.index');
 Route::get('/items/{itemId}', 'ItemController@show')->name('items.show');
 Route::post('/items/add-to-cart', 'ItemController@addToCart')->name('items.add-to-cart');
 Route::delete('/items/{itemId}/add-to-cart', 'ItemController@removeFromCart')->name('items.remove-from-cart');
