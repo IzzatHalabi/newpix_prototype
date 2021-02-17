@@ -22,3 +22,6 @@ Route::get('/mcdm', 'HomeController@get_mcdm')->name('mcdm.get');
 Route::get('/api', 'HomeController@get_api')->name('api.get');
 Route::get('/api-get', 'HomeController@py_get_api');
 Route::post('/api', 'HomeController@post_api');
+
+Route::post('/assign', 'HomeController@assign');
+Route::get('/trigger', 'HomeController@trigger');

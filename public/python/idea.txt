@@ -1,0 +1,47 @@
+How to track Desired room?
+
+Issue:
+    Need more distinguishing questions
+    Need more accuracy
+
+Current process: 
+    Receive weightage from senders
+    MCDM all weightages
+    List them all based on Descending orders
+    Assign them according to the List
+
+Idea Approach:
+    May need to increase assess inputs. This technique is suitable for:
+        Enable roommate is desirable;
+        Enable targeting specific roommate;
+        Enable limit based on races/religions;
+
+
+//
+
+
+Arising issue:
+    How to tackle overlapping desired room requests?
+        (Current Solution)
+            Set another set of processing queue (assign first) 
+            Set a threshold
+            When a student highly focusing on the desired room instead of the preferences,
+                with percentage above the threshold,
+                the student will be queued amongst those of which are almost guaranteed for the room.
+
+Idea ground:
+    Overlapping room requests
+        Why?
+            People choosing the same room.
+            The selected room still available although other users have chosen it.
+
+
+
+Consideration:
+    Assume all rooms are available
+
+Matching Algorithm
+Group Decision Theory
+    Group MCDM
+
+

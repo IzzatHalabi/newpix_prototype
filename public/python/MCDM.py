@@ -56,9 +56,23 @@ def getPerformance(matrix):
 
     return performance
 
+def getPerformanceWithLabel(matrix):
+    performance = {}
+    for i in range(len(matrix)):
+        performance.update({i : sum(matrix[i])})
+
+    return performance
+
+def getRank(val):
+    return dict(sorted(val.items(), key=lambda item: item[1], reverse=True))
+
 def SAW(alternatives, input, benefits):
     normMatrix = normalize(alternatives, benefits)
     normW = normalizeWeightage(input)
     normWDM = normalizeWeightageDecisionMaking(normMatrix, normW)
+    # performances = getPerformance(normWDM)
 
-    return getPerformance(normWDM)
+    performances = getPerformanceWithLabel(normWDM)
+    performances = getRank(performances)
+
+    return performances

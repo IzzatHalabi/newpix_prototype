@@ -102,11 +102,66 @@ class HomeController extends Controller
 
     public function get_mcdm()
     {
-        $process = new Process(['MCDM_Package/Main.py']);
+        $process = new Process(['python/Main.py']);
         $process->run();
 
         return response()->json([
             'respond' => $process->getOutput()
         ]);
+    }
+
+    public function playground() {
+
+        $item = Category::first();
+
+        // dd(json_decode($item->name));
+
+        return view('playground');
+    }
+
+    public function assign(Request $request)
+    {
+        Category::first()->update(['name' => $request->result]);     // Backup info
+
+        $results = json_decode($request->result);
+
+        foreach($results as $result) {
+            Room::where('village', $result[0])
+                    ->where('gender', $result[2][1])
+                    ->whereNull('student_id')
+                    ->first()
+                    ->update(['student_id' => $result[2][0]]);
+        }
+    }
+
+    public function trigger()
+    {
+        $process = new Process(['python/test2.py']);
+        $process->run();
+
+        return response()->json([
+            'respond' => $process->getOutput()
+        ]);
+    }
+
+    public function removeAllOccupants()
+    {
+        Room::query()->update(['student_id' => null]);
+
+        return back();
+    }
+
+    public function triggerTest()
+    {
+        $process = new Process(['python/test2.py']);
+        $process->run();
+
+        return back();
+    }
+    
+    public function survey() {
+
+
+        return view('survey');
     }
 }

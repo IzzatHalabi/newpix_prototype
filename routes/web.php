@@ -35,3 +35,10 @@ Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy')
 Route::get('/checkout', 'OrderController@index')->name('order.index');
 Route::post('/checkout', 'OrderController@store')->name('order.store');
 Route::get('/checkoutConfirmation', 'CheckoutConfirmationController@index')->name('checkoutconfirmation.index');
+
+
+Route::get('/playground', 'HomeController@playground');
+Route::get('/survey', 'HomeController@survey');
+Route::get('/triggerTest', 'HomeController@triggerTest');
+Route::get('/removeAllOccupants', 'HomeController@removeAllOccupants');
+

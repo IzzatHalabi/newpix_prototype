@@ -9,12 +9,20 @@
         <h3 class="">
             {{-- <button id="api">API</button> --}}
             <button id="mcdm">MCDM</button>
+            <button id="play">Play</button>
+            <a href="/triggerTest"><button>Update</button></a>
+            <a href="/removeAllOccupants"><button>Delete</button></a>
+            
+            {{-- <a href="/playground">Playground</a> --}}
         </h3>
         <hr class="">
         <br class="">
         {{-- <h3 id="api_display">
             {{ $respond }}
         </h3> --}}
+        <h3 id="play_display">
+            NA
+        </h3>
         <h3 id="mcdm_display">
             NA
         </h3>
@@ -63,7 +71,6 @@
             });
     });
 **/
-
     $(document).on('click', '#mcdm', function() {                                                                                                                     
 
         $.ajax({
@@ -73,6 +80,18 @@
             .done(function( data ) {
                 console.log(data);
                 $("#mcdm_display").text(data.respond);
+            });
+    });
+
+    $(document).on('click', '#play', function() {                                                                                                                     
+
+        $.ajax({
+            url: "/api/trigger",
+            method: "GET"
+            })
+            .done(function( data ) {
+                console.log(data);
+                $("#play_display").text(data.respond);
             });
     });
 </script>
