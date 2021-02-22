@@ -3,6 +3,17 @@ How to track Desired room?
 Issue:
     Need more distinguishing questions
     Need more accuracy
+    Need to add SIBC (M/F)
+    Need to restructure retrieving data to Python from database
+    Need Roommate concept
+    Need to select individual room after Assignment to bigger list
+    Gender in Hostels
+
+
+    Descentralize RoomLimitList
+        // Replace with Correct Room Availability
+        Use new id for new room (eg: 1:Room 1-A, 2:Room 1-B)
+            Need to group together the same room
 
 Current process: 
     Receive weightage from senders
@@ -24,9 +35,9 @@ Arising issue:
     How to tackle overlapping desired room requests?
         (Current Solution)
             Set another set of processing queue (assign first) 
-            Set a threshold
+            Get Normalize Weightage of users' inputs
+            Sort descending order on Desired Room Requests based Normalized Weightage
             When a student highly focusing on the desired room instead of the preferences,
-                with percentage above the threshold,
                 the student will be queued amongst those of which are almost guaranteed for the room.
 
 Idea ground:
@@ -43,5 +54,32 @@ Consideration:
 Matching Algorithm
 Group Decision Theory
     Group MCDM
+
+
+Survey
+    preferences
+        Price
+        Roommate
+        Roommate Race
+        etc...
+        (if possible) air-cond(price increase)
+    Preferable Villages
+        V1 to SIBC
+    If you are unable to get your desired room, which result you prefer?
+        A room from the same village
+        A room from another village but based on your desired preferences
+    (Optional) What is the most preferable village for you? Why?
+
+
+Algorithm  
+    Set Reference (collected from Database)
+    Get preference result into list
+
+    For each process
+        Run special process 
+        Select rooms( based on preference ) into a list : Filter
+        Compare selected rooms with the remaining list
+        Store compared list into checklist
+
 
 

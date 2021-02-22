@@ -1,23 +1,32 @@
+import MCDM
+import Global
+
+dict = {
+    1: {
+        'M':[1, 2, 3, 4, 5],
+        'F':[6, 7, 8, 9, 10]
+    }, 
+    2: {
+        'M':[11, 12, 13, 14, 15],
+        'F':[16, 17, 18, 19, 20]
+    }
+}
+
+dict = Global.getAvailableRoomList()
+
+print(dict)
 
 
-student = 25107
+# idc1, inputs, idc2 = Global.getInputArray()
 
-results = [
-    ('V6', 0.9624999999999999), 
-    ('V1', 0.7), 
-    ('V2', 0.6749999999999999), 
-    ('V4', 0.5651744186046512), 
-    ('V3', 0.5351744186046511), 
-    ('V5', 0.5276744186046511)
-]
+# test = [10, 7,5,5, 5,5,5]
 
-# results[0] = results[0] + (2,'i')
+# print(MCDM.normalizeWeightage(test))
 
-list = []
-for result in results:
-    list.append(result + (25107,))
-
-print(list)
+# for inp in inputs: 
+#     result = MCDM.normalizeWeightage(inp)
+#     result.pop(0)
+#     print(result)
 
 
 
