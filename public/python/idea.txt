@@ -4,14 +4,9 @@ Issue:
     Need more distinguishing questions
     Need more accuracy
     Need to add SIBC (M/F)
-    Need to restructure retrieving data to Python from database
     Need Roommate concept
-    Need to select individual room after Assignment to bigger list
-    Gender in Hostels
-
 
     Descentralize RoomLimitList
-        // Replace with Correct Room Availability
         Use new id for new room (eg: 1:Room 1-A, 2:Room 1-B)
             Need to group together the same room
 
@@ -83,3 +78,14 @@ Algorithm
 
 
 
+===== ROOMS QUICK INFO =====
+Village     Male    Female  SPECIFIC    HOSTEL  MCDM    REMAIN    Assigned Unselected    Un-Male    Un-Female
+1        
+5        
+6        
+7        
+Total
+         
+
+To analyse the trend of job requirements
+To provide suggestions of the job requirements

@@ -1,0 +1,23 @@
+Details:
+
+    How many rooms available for each village?
+    Which rooms are available?
+    Lists down unassigned students details
+
+
+
+Quick Statistics Review:
+
+    Is everyone assigned?
+    How many are assigned?
+    How many unassigned male?
+    How many unassigned female?
+
+    How many assigned by SPECIFIC?
+    How many assigned by HOSTEL?
+    How many assigned by MCDM?
+    How many assigned by REMAIN?
+
+    Check not fulled village?
+    Popularity percentage for each villages.
+

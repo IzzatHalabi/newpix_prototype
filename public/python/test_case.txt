@@ -1,0 +1,4 @@
+All rooms should be fully utilized, 
+    except when the number of gender and the room for the said gender is unavailable.
+
+All students should receive roommate with similar racial background.

@@ -40,3 +40,9 @@ def getCriteriaValues():
         ])
     return list   
 
+# List all studentId in students
+def getStudentIds():
+    list = []
+    for student in GlobalData.students: list.append(student['id'])
+    return list
+

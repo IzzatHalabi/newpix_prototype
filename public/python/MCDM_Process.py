@@ -37,15 +37,17 @@ def distributeResults(results, excludeStudents = []):
 def assign(options, acceptedRequests = [], excludeStudents = [], excludeRooms = []):
 
     for option in options:       
-        
+
+        if option[0] == 7: continue                                 # Skip when SIBC is chosen
+        if option[2] in excludeStudents: continue                   # Skip when student assigned
+
         village = Pointer.getVillageById(option[0])                     # option[0] = village
         student = Pointer.getStudentById(option[2])                     # option[1] = percentage
         availRooms = getAvailableRooms(village, student, excludeRooms)  # option[2] = studentId
 
-        if option[2] in excludeStudents: continue                   # Skip when student assigned
         if not availRooms: continue                                 # Skip when no avail room
 
-        acceptedRequests.append([availRooms[0], option[2]])         # [roomId, studentId]
+        acceptedRequests.append([availRooms[0], option[2], GlobalData.MODE_MCDM])         # [roomId, studentId]
         excludeStudents.append(option[2])
         excludeRooms.append(availRooms[0])
 
